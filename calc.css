@@ -1,0 +1,122 @@
+/* Basic styles ***************/
+
+body {
+  background: #CCC;
+  
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  font-size: 24px;
+}
+
+p {
+  font-size: 1em;
+  margin: 2% 2%;
+}
+
+button {
+  width: 16%;
+  height: 20%;
+  font-size: 24px;
+  margin: 2% 1%;
+  
+  background-color: #FFF;
+  
+  /*border-radius: 20%;*/
+}
+
+/* Main styles ****************/
+
+#info p {
+  display: flex;
+  position: relative;
+  float: left;
+  
+  height: 1em;
+  width: 1em;
+  
+  left: 1%;
+  background-color: #FFF;
+  padding: 1%;
+  
+  border-radius: 50%;
+  justify-content: center;
+  text-align: center;
+  
+  font-size: 24px;
+} 
+
+.calc-body {
+  max-width: 380px;
+  min-width: 200px;
+  width: 40%;
+  height: 40%; /* 80% in codepen */
+  
+  margin: auto;
+  margin-top: 1em;
+  
+  text-align: center;
+  background-color: #EEE;
+  
+/*  border-radius: 5%;*/
+}
+
+#calc-name {
+  padding: 1% 2% 2%;
+  margin-bottom: 1%;
+  font-family: "Century Gothic", "Arial", sans-serif;
+  font-size: 1.2em;
+}
+
+#display {
+  background-color: #FFF;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 3%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+/*  border: 1px solid darkslategrey;*/
+  
+/*  border-radius: 10%;*/
+  
+}
+
+#result {
+  text-align: right;
+  padding: 5% 5%;
+  margin: 5% 12%;
+  background: aquamarine;
+  border: 1px solid grey;
+  
+  font-size: 28px;
+  
+/*  border-radius: 5%;*/
+}
+
+/* Layout styles **************/
+
+
+/* Media Queries **************/
+@media (max-width: 680px) {
+  body {
+    font-size: 22px;
+  }
+  
+  h1, h2 {
+    display: hide;
+  }
+  
+  button {
+    font-size: 18px;
+  }
+
+  #result {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 300px) {
+  #result {
+    font-size: 12px;
+  }
+}
