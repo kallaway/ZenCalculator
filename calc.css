@@ -1,9 +1,10 @@
 /* Basic styles ***************/
+/* Color scheme chosen is http://colorhunt.co/c/1649 */
 
 body {
-  background: #CCC;
+  background: #C9D6DF;
   
-  font-family: "Roboto", sans-serif;
+  font-family: "Inconsolata", sans-serif;
   font-weight: bold;
   letter-spacing: 0.02em;
   font-size: 24px;
@@ -15,12 +16,17 @@ p {
 }
 
 button {
-  width: 16%;
-  height: 20%;
+  width: 25%;
+  height: 3em;
   font-size: 24px;
-  margin: 2% 1%;
+  margin: 0;
   
-  background-color: #FFF;
+  background-color: #F0F5F9;
+  color: #1E2022;
+  
+  border: none;
+  
+  float: left;
   
   /*border-radius: 20%;*/
 }
@@ -36,7 +42,7 @@ button {
   width: 1em;
   
   left: 1%;
-  background-color: #FFF;
+  background-color: #F0F5F9;
   padding: 1%;
   
   border-radius: 50%;
@@ -46,18 +52,28 @@ button {
   font-size: 24px;
 } 
 
+#project-description {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  background-color: #F0F5F9;
+  display: none;
+}
+
 .calc-body {
   max-width: 380px;
   min-width: 200px;
-  width: 40%;
-  height: 40%; /* 80% in codepen */
+  width: 50%;
+  height: 50%; /* 80% in codepen */
   
   margin: auto;
   margin-top: 1em;
   
   text-align: center;
-  background-color: #EEE;
+  background-color: #F0F5F9;
   
+  display: flex;
+  justify-content: center;
 /*  border-radius: 5%;*/
 }
 
@@ -69,12 +85,9 @@ button {
 }
 
 #display {
-  background-color: #FFF;
-  width: 95%;
+  background-color: #F0F5F9;
+  width: 100%;
   margin: auto;
-  margin-bottom: 3%;
-  padding-top: 2%;
-  padding-bottom: 5%;
 /*  border: 1px solid darkslategrey;*/
   
 /*  border-radius: 10%;*/
@@ -84,16 +97,28 @@ button {
 #result {
   text-align: right;
   padding: 5% 5%;
-  margin: 5% 12%;
-  background: aquamarine;
+  background: #52616B;
+  color: #F0F5F9;
   border: 1px solid grey;
   
-  font-size: 28px;
+  font-size: 32px;
   
 /*  border-radius: 5%;*/
 }
 
+.key-row button {
+  margin: 0;
+  padding: 0;
+}
+
 /* Layout styles **************/
+
+/* Pseudoclass styles */
+
+button:hover {
+  background-color: #52616B;
+  color: #F0F5F9;
+}
 
 
 /* Media Queries **************/

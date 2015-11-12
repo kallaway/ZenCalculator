@@ -4,6 +4,9 @@
 // IDEA: buttons should have gradient going from grey to white from top to bottom, but when clicked, the gradient is reversed.
 
 // Getting all the needed elements on the page
+
+var keyInfo = document.getElementById("info");
+var displayInfo = document.getElementById("project-description");
 var result = document.getElementById("result");
 
 var key0 = document.getElementById("0");
@@ -39,10 +42,10 @@ var zenQuotes = [ "breathe", "peace", "know thyself", "now",
  				 "support others", "dance", "sing", "smile",
  				 "travel", "start", "start today", "start now",
  				 "carry on", "try", "clean", "live simply",
- 				 "choose thoughts", "be flexible", "practice", "look within",
- 				 "be grateful" ];
+ 				 "choose your thoughts", "be flexible", "practice", "look within" ];
 
 console.log("The current number of quotes in the calculator is " + zenQuotes.length);
+
 // function to generate the a random number based on the array given
 function randomArrayElement(arr) {
 	return Math.floor(Math.random() * arr.length + 1);
@@ -56,14 +59,22 @@ function setRandomQuote(arr) {
 // run the function and hold on to the number
 // inject the array element (quote) that is at the index of the random number - into the display of the calculator
 setRandomQuote(zenQuotes);
-// ALSO: Each time the CE button is pressed,  
-
 
 var expression = "";
 var isCalculating = true;
 var saveTheValue;
 
 var actions = []; // building up an array of actions.
+
+// Function to display and hide the description of the project.
+keyInfo.addEventListener("mouseover", function() {
+		displayInfo.style.display = "inline-block";
+}, false);
+
+keyInfo.addEventListener("mouseout", function() {
+	displayInfo.style.display = "none";
+}, false);
+
 
 // Basic arithmetic functions:
 function sum(a, b) { return a + b; }
@@ -101,29 +112,48 @@ function calculate(actions) {
 
 	for (var i = 0; i < actions.length; i++) {
 		if (runningResult === 0) {
-			runningResult = parseInt(actions[i]);
-		} else if (parseInt(actions[i]) < 10) {
+			var indexDot = runningResult.toString().indexOf(".");
+			if (indexDot !== -1) {
+				runningResult = parseFloat(actions[i]);
+			} else {
+				runningResult = parseInt(actions[i]); 
+			}
+
+		} else if (parseInt(actions[i]) < 10 || runningResult) {
 			continue;
 		} else {
+			// Choosing whether to parseInt or parseFloat based on the dot symbol
+			// Create a function that automates the process of this?
+
+			console.log("Modified running result is " + runningResult)
+
+			var formattedNumber;
+			if (actions[i+1].indexOf(".") !== -1) {
+				formattedNumber = parseFloat(actions[i+1]);
+			} else {
+				formattedNumber = parseInt(actions[i+1]);
+			}
+			console.log("THE FORMATTED NUMBER IS " + formattedNumber);
+
 			switch (actions[i]) {
 				case "+":
-					runningResult = sum(runningResult, parseInt(actions[i+1]));
+					runningResult = sum(runningResult, formattedNumber);
 					break;
 
 				case "-":
-					runningResult = subtract(runningResult, parseInt(actions[i+1]));
+					runningResult = subtract(runningResult, formattedNumber);
 					break;
 
 				case "X":
-					runningResult = multiply(runningResult, parseInt(actions[i+1]));
+					runningResult = multiply(runningResult, formattedNumber);
 					break;
 
 				case "/":
-					runningResult = divide(runningResult, parseInt(actions[i+1]));
+					runningResult = divide(runningResult, formattedNumber);
 					break;
 
 				case "%":
-					runningResult = percentage(runningResult, parseInt(actions[i]));
+					runningResult = percentage(runningResult, formattedNumber);
 					break;	
 
 				default:
@@ -164,7 +194,7 @@ function workWithInput(input) {
 		expression = "";
 		setRandomQuote(zenQuotes);
 
-	} else if (parseInt(input) < 10) {
+	} else if (parseInt(input) < 10 || input === ".") {
 			expression += input;
 			result.textContent = expression;
 
@@ -203,4 +233,3 @@ attachListeners(buttons);
 // THEN GO THROUGH THE EVALUATOR FUNCTION WHICH EVALUATES BASED ON THE INPUT.
 // IF A NUMBER COMES ALONG AFTER THE PREVIOUS THING WAS A NUMBER THEN BUILD THEM INTO A STRING, 
 // THEN PUSH AS A NUMBER
-
