@@ -9,6 +9,7 @@ var keyInfo = document.getElementById("info");
 var displayInfo = document.getElementById("project-description");
 var result = document.getElementById("result");
 
+// Should this be a loop?
 var key0 = document.getElementById("0");
 var key1 = document.getElementById("1");
 var key2 = document.getElementById("2");
@@ -112,14 +113,15 @@ function calculate(actions) {
 
 	for (var i = 0; i < actions.length; i++) {
 		if (runningResult === 0) {
-			var indexDot = runningResult.toString().indexOf(".");
+			var indexDot = actions[i].toString().indexOf(".");
+			console.log("the index of the Dot if present is " + indexDot)
 			if (indexDot !== -1) {
 				runningResult = parseFloat(actions[i]);
 			} else {
 				runningResult = parseInt(actions[i]); 
 			}
 
-		} else if (parseInt(actions[i]) < 10 || runningResult) {
+		} else if (parseInt(actions[i]) < 10) {
 			continue;
 		} else {
 			// Choosing whether to parseInt or parseFloat based on the dot symbol
@@ -193,6 +195,10 @@ function workWithInput(input) {
 		actions = [];
 		expression = "";
 		setRandomQuote(zenQuotes);
+
+	} else if (input === "CE") {
+
+		expression = "";
 
 	} else if (parseInt(input) < 10 || input === ".") {
 			expression += input;
