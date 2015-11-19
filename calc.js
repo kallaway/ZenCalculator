@@ -1,6 +1,8 @@
 // IDEA: Add a random quote to be displayed on the calculator (maybe each time AC is pressed).
 // When you hover over the question mark - the list of features is displayed in a box
 
+// IDEA: Change from switch statement to an object with keys that are + - * / etc. for better representation and structure
+
 // IDEA: buttons should have gradient going from grey to white from top to bottom, but when clicked, the gradient is reversed.
 
 // Getting all the needed elements on the page
@@ -83,7 +85,7 @@ function subtract(a, b) { return a - b; }
 function multiply(a, b) { return a * b; }
 function divide(a, b) {	
 		var divResult = a / b;
-		divResult = ("" + divResult).slice(0, 12);
+		divResult = ("" + divResult).slice(0, 15);
 		return divResult;
 	}
 function percentage(a, b) { return (a / b) * 100; }
@@ -101,6 +103,37 @@ function buttonGrabber() {
 }
 
 
+function filterArray(array) {
+
+	var simpleArray = [];
+	// Filtering out the empty strings first (Later work on a fix for this)
+	array = array.filter(function(value) {
+		if (value) { return value; };
+	});
+
+	console.log("After filtering out the empty strings, the array contains: ");
+	console.log(array);
+
+	simpleArray.push(array[0]);
+
+	for (var i = 1; i < array.length - 1; i++) {
+		if ()
+
+		// if (!isNaN(parseInt(array[i]))) {
+		// 	simpleArray.push(array[i]);
+		// } else if (isNaN(parseInt(array[i-1]))) {
+		// 	simpleArray.push(array[i]);
+		// }
+
+		
+
+	}
+
+	console.log("After filtering out the extra actions, the array contains: ");
+	console.log(simpleArray);
+
+	return simpleArray;
+}
 
 
 function calculate(actions) {
@@ -109,6 +142,11 @@ function calculate(actions) {
 	// Display the result on the calculator
 	console.log("function Calculate is activated.");
 	console.log("The list of actions I am working with is " + actions)
+
+	// Filtering the array of actions
+	actions = filterArray(actions);
+	console.log("After the filter function, the array contains: " + actions);
+
 	var runningResult = 0;
 
 	for (var i = 0; i < actions.length; i++) {
@@ -159,7 +197,7 @@ function calculate(actions) {
 					break;	
 
 				default:
-					alert("no such function?");
+					alert("This function is not available. Try something simpler.");
 			}
 		}
 
@@ -201,19 +239,22 @@ function workWithInput(input) {
 		expression = "";
 
 	} else if (parseInt(input) < 10 || input === ".") {
+
+		if (expression.length < 15) { // Check whether the displayed digit limit is hit
 			expression += input;
 			result.textContent = expression;
 
 			console.log("Current Expression: " + expression);
-
 		} else {
+			console.log("You've hit the limit of digits that can be displayed on the calculator.")
+		}
+
+	} else {
 			actions.push(expression);
 			expression = input;
 			actions.push(expression);
 			expression = "";
-		}
-	
-
+	}
 } 		
 
 

@@ -17,9 +17,12 @@ p {
 
 button {
   width: 25%;
-  height: 3em;
+/*  height: 3em;*/
   font-size: 24px;
   margin: 0;
+  
+  justify-content: center;
+  text-align: center;
   
   background-color: #F0F5F9;
   color: #1E2022;
@@ -31,11 +34,17 @@ button {
   /*border-radius: 20%;*/
 }
 
+button:after {
+  content: "";
+  display: block;
+  padding-bottom: 65%;
+}
+
 /* Main styles ****************/
 
 #info p {
   display: flex;
-  position: relative;
+  position: absolute;
   float: left;
   
   height: 1em;
@@ -48,6 +57,7 @@ button {
   border-radius: 50%;
   justify-content: center;
   text-align: center;
+  z-index: 2;;
   
   font-size: 24px;
 } 
