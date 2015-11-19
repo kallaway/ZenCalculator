@@ -116,8 +116,17 @@ function filterArray(array) {
 
 	simpleArray.push(array[0]);
 
-	for (var i = 1; i < array.length - 1; i++) {
-		if ()
+	for (var i = 1; i < array.length; i++) {
+		if (isNaN(parseInt(array[i-1])) === false) {
+			simpleArray.push(array[i]);
+		} else {
+			if (isNaN(parseInt(array[i]))) {
+				simpleArray.pop();
+				simpleArray.push(array[i]);
+			} else {
+				simpleArray.push(array[i]);
+			}
+		}
 
 		// if (!isNaN(parseInt(array[i]))) {
 		// 	simpleArray.push(array[i]);
@@ -125,7 +134,7 @@ function filterArray(array) {
 		// 	simpleArray.push(array[i]);
 		// }
 
-		
+
 
 	}
 
