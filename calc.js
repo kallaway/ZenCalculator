@@ -111,6 +111,15 @@ function filterArray(array) {
 		if (value) { return value; };
 	});
 
+	// Getting rid of extra actions
+	for (var i = 0; i < array.length; i++) {
+		if (isNaN(parseInt(array[0]))) {
+			array.shift();
+		} else {
+			break;
+		}
+	}
+
 	console.log("After filtering out the empty strings, the array contains: ");
 	console.log(array);
 
@@ -127,15 +136,6 @@ function filterArray(array) {
 				simpleArray.push(array[i]);
 			}
 		}
-
-		// if (!isNaN(parseInt(array[i]))) {
-		// 	simpleArray.push(array[i]);
-		// } else if (isNaN(parseInt(array[i-1]))) {
-		// 	simpleArray.push(array[i]);
-		// }
-
-
-
 	}
 
 	console.log("After filtering out the extra actions, the array contains: ");

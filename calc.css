@@ -17,7 +17,7 @@ p {
 
 button {
   width: 25%;
-/*  height: 3em;*/
+  height: 3.8em;
   font-size: 24px;
   margin: 0;
   
@@ -25,7 +25,7 @@ button {
   text-align: center;
   
   background-color: #F0F5F9;
-  color: #1E2022;
+  color: #52616B;
   
   border: none;
   
@@ -34,10 +34,9 @@ button {
   /*border-radius: 20%;*/
 }
 
-button:after {
-  content: "";
-  display: block;
-  padding-bottom: 65%;
+#plus:after {
+  /* INCREASE the size so that it doubles */
+  height: 7.4em;
 }
 
 /* Main styles ****************/
@@ -54,20 +53,24 @@ button:after {
   background-color: #F0F5F9;
   padding: 1%;
   
+  margin-bottom: 1%;
+  
   border-radius: 50%;
   justify-content: center;
   text-align: center;
-  z-index: 2;;
+  z-index: 2;
   
   font-size: 24px;
 } 
 
 #project-description {
   position: absolute;
-  top: 100px;
+  top: 130px;
   left: 20px;
   background-color: #F0F5F9;
   display: none;
+  
+  width: 20%;
 
   font-size: 16px;
 }
@@ -86,7 +89,6 @@ button:after {
   
   display: flex;
   justify-content: center;
-/*  border-radius: 5%;*/
 }
 
 #calc-name {
@@ -100,10 +102,6 @@ button:after {
   background-color: #F0F5F9;
   width: 100%;
   margin: auto;
-/*  border: 1px solid darkslategrey;*/
-  
-/*  border-radius: 10%;*/
-  
 }
 
 #result {
@@ -123,6 +121,10 @@ button:after {
   padding: 0;
 }
 
+#info-bottom {
+  display: none;
+}
+
 /* Layout styles **************/
 
 /* Pseudoclass styles */
@@ -134,6 +136,13 @@ button:hover {
 
 
 /* Media Queries **************/
+@media (min-width: 900px) {
+  #project-description {
+    top: 150px;
+  }
+}
+
+
 @media (max-width: 680px) {
   body {
     font-size: 22px;
@@ -144,16 +153,57 @@ button:hover {
   }
   
   button {
-    font-size: 18px;
+    font-size: 24px;
+    height: 4em;
+  }
+    
+   .calc-body {
+    width: 80%;
   }
 
   #result {
-    font-size: 16px;
+    font-size: 24px;
+  }
+  
+  /* Dealing with info and info-bottom */
+  
+  #info {
+    display: none;
+  }
+  
+  #info-bottom {
+    display: block;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
   }
 }
 
-@media (max-width: 300px) {
+
+@media (max-width: 530px) {
+  /* hide the first div */
+
+  
+  #info p {
+    display: block;
+  }
+  
+  #project-description {
+    width: 25%;
+  }
+  
+  button {
+    height: 3.8em;
+  }
+}
+
+@media (max-width: 380px) {
+  button {
+    height: 2.5em;
+  }
+  
   #result {
-    font-size: 12px;
+    font-size: 20px;
   }
 }
